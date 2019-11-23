@@ -15,6 +15,25 @@ public class tankControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            if (facingRight)
+            {
+                facingRight = false;
+                //gameObject.transform.
+            }
+            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(-accelerationForce, 0.0f, 0.0f), ForceMode.Acceleration);
+            Debug.Log("Left arrow pressed");
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(accelerationForce, 0.0f, 0.0f), ForceMode.Acceleration);
+            Debug.Log("Right arrow pressed");
+        }
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+
+        }
     }
 }
