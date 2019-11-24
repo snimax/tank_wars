@@ -5,7 +5,10 @@ using UnityEngine;
 public class tankControl : MonoBehaviour
 {
     public float accelerationForce = 1.0f;
-    bool facingRight = true;
+    public float movementSpeed = 5.0f;
+
+    private float yRotation = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,23 +20,34 @@ public class tankControl : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            if (facingRight)
-            {
-                facingRight = false;
-                //gameObject.transform.
-            }
-            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(-accelerationForce, 0.0f, 0.0f), ForceMode.Acceleration);
+            transform.position += Vector3.left * Time.deltaTime * movementSpeed;
             Debug.Log("Left arrow pressed");
+            //transform.eulerAngles = new Vector3(0, 180, 0);
+            yRotation = 180.0f;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(accelerationForce, 0.0f, 0.0f), ForceMode.Acceleration);
             Debug.Log("Right arrow pressed");
+            transform.position += Vector3.right * Time.deltaTime * movementSpeed;
+            //transform.eulerAngles = new Vector3(0, 0, 0);
+            yRotation = 0.0f;
         }
-
-        if (Input.GetKey(KeyCode.UpArrow))
+        else if (Input.GetKey(KeyCode.Space))
         {
-
+            Debug.Log("Space pressed");
+            transform.position += Vector3.up * Time.deltaTime * movementSpeed*2;
         }
+
+        // Prevent rotation around X-azis and Z-axis, only allow Y-axis to be 0 or 180.
+        Quaternion quaternionAngles = transform.rotation;
+        quaternionAngles.eulerAngles = new Vector3(0, yRotation, 0);
+        transform.rotation = quaternionAngles;
+
+        // Prevent movement in Z-axis
+        Vector3 position = transform.position;
+        position.z = 0;
+        transform.position = position;
+
+        Debug.Log("quaternionAngles = " + quaternionAngles.eulerAngles);
     }
 }
