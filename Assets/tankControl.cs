@@ -47,7 +47,5 @@ public class tankControl : MonoBehaviour
         Vector3 position = transform.position;
         position.z = 0;
         transform.position = position;
-
-        Debug.Log("quaternionAngles = " + quaternionAngles.eulerAngles);
     }
 }
