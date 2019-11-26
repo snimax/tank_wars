@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 4448019118817858100}
   - component: {fileID: 8342955380942396460}
   - component: {fileID: 2242511744699733842}
-  - component: {fileID: 3934270959045904734}
   m_Layer: 0
   m_Name: leftWheel
   m_TagString: Untagged
@@ -141,20 +140,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!138 &3934270959045904734
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2823760550715553318}
-  m_ConnectedBody: {fileID: 4806760132385400941}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &3186788458964622254
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +499,6 @@ GameObject:
   - component: {fileID: 4515797774106921206}
   - component: {fileID: 3093676112769374321}
   - component: {fileID: 8305964574504969056}
-  - component: {fileID: 3252154339576252488}
   m_Layer: 0
   m_Name: centerWheel
   m_TagString: Untagged
@@ -611,20 +595,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!138 &3252154339576252488
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4012212790187246611}
-  m_ConnectedBody: {fileID: 4806760132385400941}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &8002357417698138830
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +673,6 @@ GameObject:
   - component: {fileID: 2947443074498459575}
   - component: {fileID: 1793076516989514925}
   - component: {fileID: 102198173321415911}
-  - component: {fileID: 6310451433689783618}
   m_Layer: 0
   m_Name: rightWheel
   m_TagString: Untagged
@@ -800,17 +769,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!138 &6310451433689783618
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8876947854952895472}
-  m_ConnectedBody: {fileID: 4806760132385400941}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
