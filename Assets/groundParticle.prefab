@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 440377880866359090}
   - component: {fileID: 3761769895345051263}
   - component: {fileID: 6951518498071513364}
+  - component: {fileID: 136780401664426949}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: groundParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,3 +95,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.25
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &136780401664426949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6224587637824484288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272ffb146fc4a8046896f590671a62bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

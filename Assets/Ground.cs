@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour
 {
+    public bool flatGround = false;
     public GameObject groundParticle;
     public GameObject terrainParentObject;
     // Start is called before the first frame update
@@ -25,7 +26,8 @@ public class Ground : MonoBehaviour
         surface = new float[resolution+1];
         groundParticles = new GameObject[resolution+1];
 
-        surface = generateFractal(surface, 5);
+        if(!flatGround)
+            surface = generateFractal(surface, 5);
 
         float sin60 = Mathf.Sin(Mathf.PI / 3.0f);
         int height = Mathf.CeilToInt(terrainScalar/ stepSize + Mathf.Abs(terrainStart));
@@ -45,11 +47,12 @@ public class Ground : MonoBehaviour
                 GameObject g = Instantiate(groundParticle, new Vector3(x, y), Quaternion.identity, terrainParentObject.transform);
                 float b = 2.5f;
                 g.transform.localScale = new Vector3(stepSize/b, stepSize/b, stepSize/b);
+                g.name = "groundParticle";
                 //g.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;// ^ RigidbodyConstraints.FreezePositionY;
                 a++;
             }
         }
-        Debug.Log(a.ToString());
+        Debug.Log("Generated ground particles: " + a.ToString());
 
 
         /*        int i = 0;
@@ -104,7 +107,7 @@ public class Ground : MonoBehaviour
             }
             frequency *= 2;
         }
-        Debug.Log(terrainMin);
+        Debug.Log("Minimum ground fractal value:" + terrainMin.ToString());
         return array;
         
     }

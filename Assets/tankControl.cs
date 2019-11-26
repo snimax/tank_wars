@@ -12,7 +12,7 @@ public class tankControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class tankControl : MonoBehaviour
             //transform.eulerAngles = new Vector3(0, 0, 0);
             yRotation = 0.0f;
         }
-        else if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             Debug.Log("Space pressed");
             transform.position += Vector3.up * Time.deltaTime * movementSpeed*2;
@@ -48,4 +48,5 @@ public class tankControl : MonoBehaviour
         position.z = 0;
         transform.position = position;
     }
+
 }
