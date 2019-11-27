@@ -14,7 +14,9 @@ public class disableGroundParticle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Rigidbody rb = GetComponent<Rigidbody>();
+        
         if (rb != null)
         {
             if((rb.velocity.x + rb.velocity.y) <= threshold)
@@ -22,6 +24,7 @@ public class disableGroundParticle : MonoBehaviour
                 rb.velocity.Set(0.0f, 0.0f, 0.0f);
                 rb.rotation.Set(0.0f, 0.0f, 0.0f, 0.0f);
                 rb.isKinematic = false;
+                //Destroy(rb);
             }
         }
     }

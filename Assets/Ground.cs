@@ -44,7 +44,7 @@ public class Ground : MonoBehaviour
                 {
                     continue;
                 }
-                GameObject g = Instantiate(groundParticle, new Vector3(x, y), Quaternion.identity, terrainParentObject.transform);
+                GameObject g = Instantiate(groundParticle, new Vector3(x, y), Quaternion.identity, gameObject.transform);
                 float b = 2.5f;
                 g.transform.localScale = new Vector3(stepSize/b, stepSize/b, stepSize/b);
                 g.name = "groundParticle";
