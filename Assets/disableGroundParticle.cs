@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class disableGroundParticle : MonoBehaviour
 {
-    public float threshold = 0.001f;
+    public float threshold = 0.0001f;
+    int i = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,16 +16,25 @@ public class disableGroundParticle : MonoBehaviour
     void Update()
     {
 
-        Rigidbody rb = GetComponent<Rigidbody>();
         
+    }
+
+    private void LateUpdate()
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+
         if (rb != null)
         {
-            if((rb.velocity.x + rb.velocity.y) <= threshold)
+            if ((rb.velocity.x + rb.velocity.y) <= threshold)
             {
-                rb.velocity.Set(0.0f, 0.0f, 0.0f);
-                rb.rotation.Set(0.0f, 0.0f, 0.0f, 0.0f);
-                rb.isKinematic = false;
-                //Destroy(rb);
+                if (i++ > 100)
+                {
+                    Destroy(rb);
+                }
+            }
+            else
+            {
+                i = 0;
             }
         }
     }
