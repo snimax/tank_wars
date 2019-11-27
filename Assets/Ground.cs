@@ -6,7 +6,6 @@ public class Ground : MonoBehaviour
 {
     public bool flatGround = false;
     public GameObject groundParticle;
-    public GameObject terrainParentObject;
     // Start is called before the first frame update
     public int resolution;
     private float[] surface;
