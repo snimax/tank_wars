@@ -8,13 +8,16 @@ public class EnemyCannonControl : MonoBehaviour
     public float shotCharge = 0.0f;
     private float chargeStart;
     public GameObject cannonBall;
-    public float shotForce = 100.0f;
+    public float shotForce = 1000.0f;
 
-    public float stoppingDistance = 7.0f;
-    public float retreatDistance = 4.0f;
+    public float inSightDistance = 8.0f;
+    public float stoppingDistance = 6.0f;
+    public float retreatDistance = 3.0f;
     public Transform playerTank;
     private float startShotTime = 0.0f;
     public float fireTimeInterval = 3.0f;
+
+    private bool moveCannonLeft = false;
 
     // Start is called before the first frame update
     void Start()
@@ -67,27 +70,113 @@ public class EnemyCannonControl : MonoBehaviour
         }
         */
 
-
-
-        if (Vector3.Distance(transform.position, playerTank.position) < stoppingDistance)
+        float distanceToPlayer = Vector3.Distance(transform.position, playerTank.position);
+        Vector3 rotation = transform.localRotation.eulerAngles;
+        if (distanceToPlayer > inSightDistance)
         {
-            // we are in sight
-            if (Vector3.Distance(transform.position, playerTank.position) > stoppingDistance - 1)
+            // not in sight, scaning mode
+            if(moveCannonLeft)
             {
-                shotCharge = 0.75f;
-            }
-            else if (Vector3.Distance(transform.position, playerTank.position) > stoppingDistance - 2)
-            {
-                shotCharge = 0.5f;
-            }
-            else if (Vector3.Distance(transform.position, playerTank.position) > stoppingDistance - 3)
-            {
-                shotCharge = 0.25f;
+                if (rotation.z <= 180.0f)
+                {
+                    rotation.z += turretSpeed;
+                    transform.Rotate(0.0f, 0.0f, turretSpeed, Space.Self);
+                }
+                else
+                {
+                    moveCannonLeft = false;
+                }
+
             }
             else
             {
+                if (rotation.z >= 0.0f)
+                {
+                    rotation.z -= turretSpeed;
+                    transform.Rotate(0.0f, 0.0f, -turretSpeed, Space.Self);
+                }
+                else
+                {
+                    moveCannonLeft = true;
+                }
+            }
+        }
+        else if (distanceToPlayer < inSightDistance && distanceToPlayer > stoppingDistance)
+        {
+            // in sight, point the barrel towards the player
+            if (rotation.z != 160)
+            {
+                if (160 - rotation.z >= 0)
+                {
+                    rotation.z += turretSpeed;
+                    transform.Rotate(0.0f, 0.0f, turretSpeed, Space.Self);
+                }
+                else
+                {
+                    rotation.z -= turretSpeed;
+                    transform.Rotate(0.0f, 0.0f, -turretSpeed, Space.Self);
+                }
+            }
+        }
+        else if (distanceToPlayer < stoppingDistance)
+        {
+            // in distance of shooting
+            if (distanceToPlayer > stoppingDistance - 1)
+            {
+                if (rotation.z != 165)
+                {
+                    if (165 - rotation.z >= 0)
+                    {
+                        rotation.z += turretSpeed;
+                        transform.Rotate(0.0f, 0.0f, turretSpeed, Space.Self);
+                    }
+                    else
+                    {
+                        rotation.z -= turretSpeed;
+                        transform.Rotate(0.0f, 0.0f, -turretSpeed, Space.Self);
+                    }
+                }
                 shotCharge = 0.5f;
             }
+            else if (distanceToPlayer > stoppingDistance - 2)
+            {
+                if (rotation.z != 172.5)
+                {
+                    if (172.5 - rotation.z >= 0)
+                    {
+                        rotation.z += turretSpeed;
+                        transform.Rotate(0.0f, 0.0f, turretSpeed, Space.Self);
+                    }
+                    else
+                    {
+                        rotation.z -= turretSpeed;
+                        transform.Rotate(0.0f, 0.0f, -turretSpeed, Space.Self);
+                    }
+                }
+                shotCharge = 0.35f;
+            }
+            else if (distanceToPlayer > stoppingDistance - 3)
+            {
+                if (rotation.z != 177.5)
+                {
+                    if (177.5 - rotation.z >= 0)
+                    {
+                        rotation.z += turretSpeed;
+                        transform.Rotate(0.0f, 0.0f, turretSpeed, Space.Self);
+                    }
+                    else
+                    {
+                        rotation.z -= turretSpeed;
+                        transform.Rotate(0.0f, 0.0f, -turretSpeed, Space.Self);
+                    }
+                }
+                shotCharge = 0.2f;
+            }
+            else
+            {
+                shotCharge = 0.1f;
+            }
+
             if(Time.time - startShotTime > fireTimeInterval)
             {
                 FireCannon();

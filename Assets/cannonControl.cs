@@ -45,8 +45,6 @@ public class cannonControl : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Space))
         {
             float shotCharge = Time.time - chargeStart;
-            Debug.Log("chargeStart = " + chargeStart);
-            Debug.Log("shotCharge = " + shotCharge);
             shotCharge = shotCharge > 1 ? 1 : shotCharge;
             Quaternion rotation = transform.localRotation;
             Vector3 pos = transform.position;

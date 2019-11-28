@@ -244,8 +244,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementForce: 4000
-  stoppingDistance: 7
-  retreatDistance: 4
+  inSightDistance: 8
+  stoppingDistance: 6
+  retreatDistance: 3
   playerTank: {fileID: 0}
 --- !u!1001 &64574876
 PrefabInstance:
@@ -306,7 +307,7 @@ PrefabInstance:
     - target: {fileID: 8002357417698138865, guid: d29ca0c8cd6c1d948863d6bcb5d1f47b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.07
+      value: 4.79
       objectReference: {fileID: 0}
     - target: {fileID: 8002357417698138865, guid: d29ca0c8cd6c1d948863d6bcb5d1f47b,
         type: 3}
@@ -1180,7 +1181,7 @@ PrefabInstance:
     - target: {fileID: 8002357417698138865, guid: d29ca0c8cd6c1d948863d6bcb5d1f47b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.29
+      value: -4.84
       objectReference: {fileID: 0}
     - target: {fileID: 8002357417698138865, guid: d29ca0c8cd6c1d948863d6bcb5d1f47b,
         type: 3}
@@ -1352,8 +1353,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementForce: 4000
-  stoppingDistance: 7
-  retreatDistance: 4
+  inSightDistance: 8
+  stoppingDistance: 6
+  retreatDistance: 3
   playerTank: {fileID: 0}
 --- !u!1 &1855377841
 GameObject:
@@ -1404,8 +1406,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementForce: 4000
-  stoppingDistance: 7
-  retreatDistance: 4
+  inSightDistance: 8
+  stoppingDistance: 6
+  retreatDistance: 3
   playerTank: {fileID: 0}
 --- !u!1 &1965707709
 GameObject:
@@ -1493,5 +1496,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretSpeed: 2
   shotCharge: 0
-  cannonBall: {fileID: 0}
-  shotForce: 100
+  cannonBall: {fileID: 1156500745836143435, guid: 330f760a21003ea4489035c72b714126,
+    type: 3}
+  shotForce: 1000
+  stoppingDistance: 6
+  retreatDistance: 3
+  playerTank: {fileID: 0}
+  fireTimeInterval: 3

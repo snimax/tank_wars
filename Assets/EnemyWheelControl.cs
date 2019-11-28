@@ -3,8 +3,9 @@
 public class EnemyWheelControl : MonoBehaviour
 {
     public float movementForce = 4000.0f;
-    public float stoppingDistance = 7.0f;
-    public float retreatDistance = 4.0f;
+    public float inSightDistance = 8.0f;
+    public float stoppingDistance = 6.0f;
+    public float retreatDistance = 3.0f;
 
     public Transform playerTank;
 
@@ -18,11 +19,13 @@ public class EnemyWheelControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(transform.position, playerTank.position) > stoppingDistance)
+        float distanceToPlayer = Vector3.Distance(transform.position, playerTank.position);
+        Debug.Log("distanceToPlayer = " + distanceToPlayer);
+        if (distanceToPlayer < inSightDistance && distanceToPlayer > stoppingDistance)
         {
             GetComponent<Rigidbody>().AddRelativeTorque(0.0f, 0.0f, movementForce);
         }
-        else if(Vector3.Distance(transform.position, playerTank.position) < retreatDistance)
+        else if(distanceToPlayer < retreatDistance)
         {
             GetComponent<Rigidbody>().AddRelativeTorque(0.0f, 0.0f, -movementForce);
         }
