@@ -30,6 +30,7 @@ public class disableGroundParticle : MonoBehaviour
                 if (i++ > 100)
                 {
                     Destroy(rb);
+                    i = 0;
                 }
             }
             else
